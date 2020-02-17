@@ -17,6 +17,8 @@
 
 (spec/def ::line ::column)
 
+(spec/def ::diff string?)
+
 (spec/def ::level #{:warning :error :exception})
 
 (defmulti reportmm :level)
@@ -35,7 +37,8 @@
                       ::level
                       ::column
                       ::line]
-             :opt-un [::msg-extra-data]))
+             :opt-un [::msg-extra-data
+                      ::diff]))
 
 (spec/def ::report
   (spec/multi-spec reportmm :level))
